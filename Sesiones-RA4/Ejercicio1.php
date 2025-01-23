@@ -26,7 +26,14 @@ caso mostrar error.
 
 
 session_start(); 
-
+ // Procesar el formulario si se envía
+ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $selectedDrink = $_POST['drink'] ?? 'None';
+    
+}
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $quantity = $_POST['quantity'] ?? 1; // Valor por defecto si no se recibe ninguno
+}
 
 
  ?>
@@ -36,15 +43,47 @@ session_start();
  <head>
 
 <title>Supermarket management</title>
+<style>
+.buttons{
+    margin-left: 45%;
+    margin-right: 35%;
 
+}
+.buttons button{
+    margin: 1px;
+}
+
+</style>
  </head>
 
  <body>
-    <h1>Supermarket management</h1>
+    <h1 style="text-align:center">Supermarket management</h1>
 
-    <button></button>
-    <button></button>
-    <button></button>
+    <h2 style="text-align:center">Choose product:</h2>
+
+<form method="post" action="" style="text-align:center">
+        
+        <select name="drink" id="drink">
+            <option value="soft_drink">Soft Drink</option>
+            <option value="milk">milk</option>
+        </select>
+        <button type="submit">Submit</button>
+    </form>
+    <h2 style="text-align:center">Product quantity:</h2>
+
+    <form method="post" action="" style="text-align:center">
+
+        <input type="number" id="quantity" name="quantity" min="1" max="100" value="1" required>
+        <button type="submit">Submit</button>
+    </form>
+<br>
+     <div class="buttons">
+    <button type="button">add</button>
+    
+    <button type="button">remove</button>
+    <button type="button">reset</button>
+    </div>
+    <h2 style="text-align:center">Inventary:</h2>
     
 <!-- form with 3 buttons -->
 <!-- list values worjer,milk,softdrink... -->
