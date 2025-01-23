@@ -45,6 +45,7 @@ session_start();
     <button></button>
     <button></button>
     <button></button>
+    
 <!-- form with 3 buttons -->
 <!-- list values worjer,milk,softdrink... -->
  </body>
