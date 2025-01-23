@@ -41,6 +41,10 @@ session_start();
 
  <body>
     <h1>Supermarket management</h1>
+
+    <button></button>
+    <button></button>
+    <button></button>
 <!-- form with 3 buttons -->
 <!-- list values worjer,milk,softdrink... -->
  </body>
