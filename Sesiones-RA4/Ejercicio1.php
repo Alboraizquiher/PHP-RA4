@@ -44,6 +44,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 <title>Supermarket management</title>
 <style>
+
 .buttons{
     margin-left: 45%;
     margin-right: 35%;
@@ -58,33 +59,28 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
  <body>
     <h1 style="text-align:center">Supermarket management</h1>
-
+    <form action="Ejercicio1.php" method="POST"></form>
+    <Label for="worker"> Worker name:</Label>
+    <input type="text" id="worker" name="worker" value="<?php echo isset($_POST['worker'])?$_POST['worker'] :''; ?>"><br><br>
     <h2 style="text-align:center">Choose product:</h2>
-
-<form method="post" action="" style="text-align:center">
-        
         <select name="drink" id="drink">
             <option value="soft_drink">Soft Drink</option>
             <option value="milk">milk</option>
         </select>
-        <button type="submit">Submit</button>
-    </form>
+        
+
     <h2 style="text-align:center">Product quantity:</h2>
 
-    <form method="post" action="" style="text-align:center">
-
-        <input type="number" id="quantity" name="quantity" min="1" max="100" value="1" required>
-        <button type="submit">Submit</button>
+        <input type="number" id="quantity" name="quantity" min="1" ><br><br>
+        <input type="submit" value="add" name="add">
+        <input type="submit" value="remove" name="remove">
+        <input type="reset" value="reset">>
     </form>
-<br>
-     <div class="buttons">
-    <button type="button">add</button>
-    
-    <button type="button">remove</button>
-    <button type="button">reset</button>
-    </div>
+
     <h2 style="text-align:center">Inventary:</h2>
-    
+    <p>worker: <?php echo isset($_SESSION['worker'])? $_SESSION['worker'] : '';?></ph>
+    <p>units milk: <?php isset($_SESSION['milk'])? $_SESSION['milk'] : '';?></p>
+    <p>units soft drink: <?php isset($_SESSION['softDrink'])? $_SESSION['softDrink'] : '';?></p>
 <!-- form with 3 buttons -->
 <!-- list values worjer,milk,softdrink... -->
  </body>
