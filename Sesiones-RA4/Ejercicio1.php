@@ -8,32 +8,56 @@ caso mostrar error.
  -->
 
  <?php
+ session_start(); 
 // when user click on a button(if form POST has been submitted )
-        // get data from form
-
+        
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+           // get data from form 
+            $worker = $_POST['worker'] ;
+             $product = $_POST['prodcut'];
+             $quantity = $_POST['quantity'];
+             
+            
         // save worker data
+        $_SESSION['worker'] = $worker; 
         // detect button
-
-        //detect button
-            // to add products
-                //evaluate product
+        // to add products
+        if (isset($_POST['add'])) {
+            //evaluate product
+            switch ($product) {
+                case 'milk':
+                    $_SESSION['milk'] += $quantity;
+                    break;
+                
+                case 'soft_drink':
+                    $_SESSION['softDrink'] += $quantity;
+                    break;
+                default:
+                    echo "product not found";
+                    break;
+            }
+        }
+        
+            
+                
                 // add quantity to corresponding product
 
             //to remove products
                 //evaluate product
                 // check if quantity is not greater than current one
                 // substract from quantity to corresponding product
+            }
 
 
-session_start(); 
- // Procesar el formulario si se envía
- if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $selectedDrink = $_POST['drink'] ?? 'None';
+if (!isset($_SESSION['softDrink'])) {
+    $_SESSION['softDrink'] = 0;
     
 }
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $quantity = $_POST['quantity'] ?? 1; // Valor por defecto si no se recibe ninguno
+if (!isset($_SESSION['milk'])) {
+    $_SESSION['milk'] = 0;
 }
+ 
+
 
 
  ?>
