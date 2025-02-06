@@ -40,15 +40,50 @@ caso mostrar error.
         
             
                 
-                // add quantity to corresponding product
+            // add quantity to corresponding product
+
+            if (isset($_POST['add'])) {
+                switch ($product) {
+                    case 'milk':
+                        $_SESSION['milk']+=$quantity;
+                        break;
+                    case 'softDrink':
+                        $_SESSION['softDrink']+=$quantity;
+                        break;
+                    default:
+                        # code...
+                        break;
+                }
 
             //to remove products
-                //evaluate product
-                // check if quantity is not greater than current one
-                // substract from quantity to corresponding product
+
+        }elseif (isset($_POST['remove'])) {
+ 
+            switch ($product) {
+                case 'milk':
+                    if ($_SESSION['milk'] - $quantity < 0) {
+                        echo "<br> <font color= 'red'> <p> Error: It is impossible remove more quantity than we have in store.</p></dont>";
+                    } else {
+                        $_SESSION['milk'] -= $quantity;
+                    }
+                    break;
+                case 'softDrink':
+                    if ($_SESSION['softDrink'] - $quantity < 0) {
+                        echo "<br> <font color= 'red'> <p> Error: It is impossible remove more quantity than we have in store.</p></dont>";
+                    } else {
+                        $_SESSION['softDrink'] -= $quantity;
+                    }                        break;
+                default:
+                echo "<br> <font color= 'red'> <p> Error: Product not found.</p></dont>";
+                    break;
             }
+            }
+}
 
-
+//initialize session variables
+if (!isset($_SESSION['worker'])) {
+    $_SESSION['worker'] = '';
+}
 if (!isset($_SESSION['softDrink'])) {
     $_SESSION['softDrink'] = 0;
     
